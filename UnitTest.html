@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.15.0.css" />
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.15.0.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
+  <script>
+    let spaceCallback = "";
+    let charCallback = "";
+    function add(a, b) {
+      return a + b;
+    }
+
+    // this test is for parent function passwordHandler and the test is set to success
+    QUnit.test("is password valid", function (assert) {
+      passwordHandler("password");
+      let actual = passCallBack;
+      let expected = "Password valid";
+
+      assert.equal(actual, expected, "Parent function runs as expected");
+    });
+    // this test checks child function charChecker
+    function updateView() {}
+    QUnit.test("is password length correct", function (assert) {
+      let actual = charHandler("HelloWorld");
+      let expected = true;
+
+      assert.equal(
+        actual,
+        expected,
+        "Result true, child charHandler runs as expected"
+      );
+    });
+
+    // this test is rigged to fail
+    QUnit.test("Does the password have space", function (assert) {
+      let actual = spaceHandler("Hello world");
+      let expected = true;
+
+      assert.equal(
+        actual,
+        expected,
+        "Password requires no use of space, child spaceHandler runs as expected"
+      );
+    });
+  </script>
+</body>

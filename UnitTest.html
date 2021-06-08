@@ -38,7 +38,7 @@
     // this test is rigged to fail
     QUnit.test("Does the password have space", function (assert) {
       let actual = spaceHandler("Hello world");
-      let expected = true;
+      let expected = false;
 
       assert.equal(
         actual,
